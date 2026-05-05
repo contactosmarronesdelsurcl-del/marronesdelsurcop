@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marronesdelsur — Procesos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-plantas">
+    <div class="site-wrapper">
+        <header class="site-header">
+            <div class="bnt-container header-inner">
+                <button type="button" class="mobile-menu-trigger" aria-label="Abrir menú">
+                    <span class="stick"></span><span class="stick"></span><span class="stick"></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html">
+                        <img class="logo-desktop" src="assets/img/logop.jpeg" width="199" height="91" alt="marronesdelsur">
+                        <img class="logo-mobile" src="assets/img/logop.jpeg" alt="marronesdelsur">
+                    </a>
+                </div>
+                <nav class="header-menu nav-primary" id="nav-primary">
+                    <ul class="primary-menu">
+                        <li><a href="index.html">Quiénes somos</a></li>
+                        <li><a href="fazemos.html">Qué hacemos</a></li>
+                        <li><a href="plantas.html">Procesos</a></li>
+                        <li><a href="mycosech.html">Mi Cosecha</a></li>
+                        <li><a href="contactos.html">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="mobile-menu-shadow" id="mobile-shadow" hidden></div>
+            <nav class="nav-mobile-panel" id="nav-mobile" aria-hidden="true">
+                <button type="button" class="mobile-close" id="mobile-close" aria-label="Cerrar menú">&times;</button>
+                <ul class="primary-mobile-menu">
+                    <li><a href="index.html">Quiénes somos</a></li>
+                    <li><a href="fazemos.html">Qué hacemos</a></li>
+                    <li><a href="plantas.html">Procesos</a></li>
+                    <li><a href="mycosech.html">Mi Cosecha</a></li>
+                    <li><a href="contactos.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="site-content">
+            <div class="bnt-container content-page">
+                <article class="page-article">
+                    <div class="entry-content">
+                        <section class="plantas-title-row">
+                            <h1 class="plantas-title">Procesos</h1>
+                        </section>
+
+                        <section class="plantas-grid" aria-label="Procesos de castañas">
+                            <article class="plant-card">
+                                <img src="assets/img/proceso1.png" alt="Siembra de castañas" loading="lazy">
+                                <h4>SIEMBRA</h4>
+                            </article>
+                            <article class="plant-card">
+                                <img src="assets/img/proceso2.png" alt="Germinación de castañas" loading="lazy">
+                                <h4>GERMINACIÓN</h4>
+                            </article>
+                            <article class="plant-card">
+                                <img src="assets/img/proceso3.png" alt="Primer trasplante de castañas" loading="lazy">
+                                <h4>PRIMER TRASPLANTE</h4>
+                            </article>
+                            <article class="plant-card">
+                                <img src="assets/img/proceso4.png" alt="Injerto ESP de castañas" loading="lazy">
+                                <h4>INJERTO ESP</h4>
+                            </article>
+                            <article class="plant-card">
+                                <img src="assets/img/proceso5.png" alt="Cosecha de castañas" loading="lazy">
+                                <h4>COSECHA</h4>
+                            </article>
+                            <article class="plant-card">
+                                <img src="assets/img/proceso6.png" alt="Transporte de castañas" loading="lazy">
+                                <h4>TRANSPORTE</h4>
+                            </article>
+                        </section>
+
+                        <section class="plantas-cta">
+                            <p>Utiliza el formulario de abajo para pedidos o para más información sobre nuestros productos.</p>
+                        </section>
+                    </div>
+                </article>
+            </div>
+
+            <section class="plantas-form-band">
+                <div class="bnt-container">
+                    <form class="plantas-form" action="#" method="post">
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label for="nombre">Nombre</label>
+                                <input id="nombre" name="nombre" type="text" required>
+                            </div>
+                            <div class="form-col">
+                                <label for="empresa">Empresa</label>
+                                <input id="empresa" name="empresa" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email" required>
+                            </div>
+                            <div class="form-col">
+                                <label for="telefono">Contacto telefónico</label>
+                                <input id="telefono" name="telefono" type="tel">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col form-col-full">
+                                <label for="mensaje">Escribe tu mensaje aquí</label>
+                                <textarea id="mensaje" name="mensaje" rows="6"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row form-submit-row">
+                            <button type="submit" class="button-link">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="sidebar-footer">
+                <div class="bnt-container footer-widgets">
+                    <div class="widget-footer footer-logo">
+                        <img src="assets/img/logot.png" width="199" height="91" alt="marronesdelsur">
+                    </div>
+                    <div class="widget-footer footer-social-wrap">
+                        <ul class="list-inline">
+                            <li><a href="https://www.facebook.com/profile.php?id=61589326258196" target="_blank" rel="noopener" class="btn-social btn-outline" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://pt.linkedin.com/in/deifil-technology-8826b67" target="_blank" rel="noopener" class="btn-social btn-outline" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="https://www.instagram.com/marronesdelsur/" target="_blank" rel="noopener" class="btn-social btn-outline" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="skype:live:deifil.technology_3?chat" class="btn-social btn-outline" aria-label="Skype"><i class="fab fa-skype"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="widget-footer">
+                        <h3 class="widget-title">DÓNDE ESTAMOS</h3>
+                        <div class="textwidget">
+                            <p>Chillán<br>Región de Ñuble, Chile</p>
+                            <p><a href="tel:+56934291154">+56 9 3429 1154</a></p>
+                            <p><a href="mailto:contactosmarronesdelsur.cl@gmail.com">contactosmarronesdelsur.cl@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <div class="bnt-container bottom-inner">
+                    <img class="financiamento" src="barra-financiamento.svg" alt="barra de financiamento">
+                    <p class="copyright">© 2026 MARRONESDELSUR. Todos los derechos reservados.</p>
+                    <div class="byaddup">
+                        <span class="byaddup-credit"><span class="line"></span>by<span class="therock">JLSP</span></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

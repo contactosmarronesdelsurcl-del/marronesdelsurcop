@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f5f5f5"/>
+  <rect x="50" y="50" width="300" height="200" fill="#e0e0e0" rx="10"/>
+  <rect x="80" y="80" width="80" height="60" fill="#4a7c43" opacity="0.5" rx="5"/>
+  <rect x="180" y="80" width="80" height="60" fill="#2d5a27" opacity="0.5" rx="5"/>
+  <rect x="280" y="80" width="40" height="60" fill="#8bc34a" opacity="0.5" rx="5"/>
+  <rect x="80" y="160" width="240" height="40" fill="#4a7c43" opacity="0.3" rx="5"/>
+  <rect x="80" y="210" width="240" height="20" fill="#2d5a27" opacity="0.2" rx="5"/>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Laboratorio</text>
+</svg>

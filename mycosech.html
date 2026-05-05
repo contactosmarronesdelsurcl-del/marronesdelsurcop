@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marronesdelsur — Mi Cosecha</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-mycosecha">
+    <div class="site-wrapper">
+        <header class="site-header">
+            <div class="bnt-container header-inner">
+                <button type="button" class="mobile-menu-trigger" aria-label="Abrir menú">
+                    <span class="stick"></span><span class="stick"></span><span class="stick"></span>
+                </button>
+                <div class="logo">
+                    <a href="index.html">
+                        <img class="logo-desktop" src="assets/img/logop.jpeg" width="199" height="91" alt="marronesdelsur">
+                        <img class="logo-mobile" src="assets/img/logop.jpeg" alt="marronesdelsur">
+                    </a>
+                </div>
+                <nav class="header-menu nav-primary" id="nav-primary">
+                    <ul class="primary-menu">
+                        <li><a href="index.html">Quiénes somos</a></li>
+                        <li><a href="fazemos.html">Qué hacemos</a></li>
+                        <li><a href="plantas.html">Procesos</a></li>
+                        <li><a href="mycosech.html" aria-current="page">Mi Cosecha</a></li>
+                        <li><a href="contactos.html">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="mobile-menu-shadow" id="mobile-shadow" hidden></div>
+            <nav class="nav-mobile-panel" id="nav-mobile" aria-hidden="true">
+                <button type="button" class="mobile-close" id="mobile-close" aria-label="Cerrar menú">&times;</button>
+                <ul class="primary-mobile-menu">
+                    <li><a href="index.html">Quiénes somos</a></li>
+                    <li><a href="fazemos.html">Qué hacemos</a></li>
+                    <li><a href="plantas.html">Procesos</a></li>
+                    <li><a href="mycosech.html">Mi Cosecha</a></li>
+                    <li><a href="contactos.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="site-content">
+            <div class="bnt-container content-page">
+                <article class="page-article">
+                    <div class="entry-content">
+                        <section class="mycosecha-title-row">
+                            <h1 class="mycosecha-title">Mi Cosecha</h1>
+                        </section>
+
+                        <section class="mycosecha-intro">
+                            <p>En <strong>Mi Cosecha</strong> reunimos de forma sencilla la información que interesa al productor: calendario de campo, cuidados básicos del castañar y referencias sobre calidad del fruto. Es un espacio pensado para quien ya plantó o está valorando ampliar superficie, con un lenguaje claro y contenidos genéricos que puedes adaptar a tu comarca y a tu variedad.</p>
+                            <p>El castañar combina trabajo en vivero, plantación y años de paisaje forestal hasta la recogida. Las fotografías de esta página son <strong>nuevas imágenes de referencia</strong> (vivero, paisaje y ciclo del fruto) obtenidas de bancos de fotos libres, para ilustrar el discurso sin sustituir el material propio de tu explotación.</p>
+                        </section>
+
+                        <section class="mycosecha-feature">
+                            <figure class="mycosecha-feature-figure">
+                                <img src="assets/img/mycosecha-hero.jpg" alt="Semilleros en estantería bajo invernadero" loading="eager" fetchpriority="high">
+                                <figcaption>Semilleros y bandejas en invernadero: humedad, luz y temperatura estables antes del endurecimiento y la salida a campo.</figcaption>
+                            </figure>
+                        </section>
+
+                        <section class="mycosecha-gallery" aria-label="Galería de vivero y paisajes de castañar">
+                            <figure class="mycosecha-card">
+                                <img src="assets/img/mycosecha-01.jpg" alt="Filas de plantas en macetas dentro de un invernadero" loading="lazy">
+                                <figcaption>Vivero: filas de planta en contenedor, orden de trabajo y trazabilidad del lote.</figcaption>
+                            </figure>
+                            <figure class="mycosecha-card">
+                                <img src="assets/img/mycosecha-02.jpg" alt="Colinas verdes bajo cielo despejado" loading="lazy">
+                                <figcaption>Paisaje ondulado y vegetación arbórea: el relieve condiciona heladas tardías y escorrentía.</figcaption>
+                            </figure>
+                            <figure class="mycosecha-card">
+                                <img src="assets/img/mycosecha-03.jpg" alt="Árbol de castaño con hojas y fruto" loading="lazy">
+                                <figcaption>Copa con fruto: seguimiento fenológico desde la floración hasta el erizo.</figcaption>
+                            </figure>
+                            <figure class="mycosecha-card">
+                                <img src="assets/img/mycosecha-04.jpg" alt="Ramas de castaño con erizos en desarrollo contra el cielo" loading="lazy">
+                                <figcaption>Ramas cargadas de erizos en desarrollo: calendario de campo y decisión de riego o nutrición.</figcaption>
+                            </figure>
+                            <figure class="mycosecha-card">
+                                <img src="assets/img/mycosecha-05.jpg" alt="Árboles dispersos en campo abierto" loading="lazy">
+                                <figcaption>Arbolado en franco: marco de plantación, orientación de ladera y accesos mecánicos.</figcaption>
+                            </figure>
+                            <figure class="mycosecha-card">
+                                <img src="assets/img/mycosecha-06.jpg" alt="Erizos de castaña en el suelo del bosque entre hojas otoñales" loading="lazy">
+                                <figcaption>Otoño bajo dosel: erizos y hojarasca, ciclo de suelo orgánico y preparación de campaña.</figcaption>
+                            </figure>
+                        </section>
+
+                        <p class="mycosecha-credits">Fotografías de archivo gratuitas desde <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a> · <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Licencia Unsplash</a>. Sustituye estos archivos en <code>assets/img</code> cuando dispongas de reportaje propio.</p>
+
+                        <section class="mycosecha-outro">
+                            <p>Si necesitas un plan de plantación, calendario fitosanitario o estimación de producción, el equipo de marronesdelsur puede ayudarte a bajar esta información genérica a tu parcela concreta.</p>
+                            <p class="mycosecha-cta"><a class="button-link" href="contactos.html">Solicitar información</a></p>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="sidebar-footer">
+                <div class="bnt-container footer-widgets">
+                    <div class="widget-footer footer-logo">
+                        <img src="assets/img/logot.png" width="199" height="91" alt="marronesdelsur">
+                    </div>
+                    <div class="widget-footer footer-social-wrap">
+                        <ul class="list-inline">
+                            <li><a href="https://www.facebook.com/profile.php?id=61589326258196" target="_blank" rel="noopener" class="btn-social btn-outline" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.linkedin.com/search/results/all/?keywords=marronesdelsur&origin=GLOBAL_SEARCH_HEADER&sid=vfv" target="_blank" rel="noopener" class="btn-social btn-outline" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="https://www.instagram.com/marronesdelsur/" target="_blank" rel="noopener" class="btn-social btn-outline" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="skype:live:deifil.technology_3?chat" class="btn-social btn-outline" aria-label="Skype"><i class="fab fa-skype"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="widget-footer">
+                        <h3 class="widget-title">DÓNDE ESTAMOS</h3>
+                        <div class="textwidget">
+                            <p>Chillán<br>Región de Ñuble, Chile</p>
+                            <p><a href="tel:+56934291154">+56 9 3429 1154</a></p>
+                            <p><a href="mailto:contactosmarronesdelsur.cl@gmail.com">contactosmarronesdelsur.cl@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <div class="bnt-container bottom-inner">
+                    <img class="financiamento" src="barra-financiamento.svg" alt="barra de financiamento">
+                    <p class="copyright">© 2026 MARRONESDELSUR. Todos los derechos reservados.</p>
+                    <div class="byaddup">
+                        <span class="byaddup-credit"><span class="line"></span>by<span class="therock">JLSP</span></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
