@@ -292,11 +292,125 @@ a:hover {
     animation: dfmaximage-appear 0.85s ease-out 0.12s both;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .dfmaximage img {
-        animation: none;
+    .chatbot-widget {
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        z-index: 999999;
+        font-family: "Open Sans", Arial, sans-serif;
+        text-align: left;
     }
-}
+
+    .chatbot-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.8rem;
+        height: 4.8rem;
+        border: none;
+        border-radius: 50%;
+        background: #00b285;
+        color: #fff;
+        cursor: pointer;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18);
+    }
+
+    .chatbot-toggle:hover,
+    .chatbot-close:hover,
+    .chatbot-send:hover {
+        filter: brightness(1.05);
+    }
+
+    .chatbot-panel {
+        display: flex;
+        flex-direction: column;
+        width: min(320px, calc(100vw - 3rem));
+        max-height: 420px;
+        margin-top: 0.75rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background: #fff;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .chatbot-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+        color: #003300;
+    }
+
+    .chatbot-close {
+        width: 2.6rem;
+        height: 2.6rem;
+        border: none;
+        border-radius: 50%;
+        background: #f2f2f2;
+        color: #333;
+        cursor: pointer;
+        font-size: 1.4rem;
+        line-height: 1;
+    }
+
+    .chatbot-body {
+        overflow-y: auto;
+        flex: 1;
+        padding-right: 0.25rem;
+    }
+
+    .chatbot-message {
+        margin-bottom: 0.75rem;
+        padding: 0.85rem 1rem;
+        border-radius: 1rem;
+        max-width: 100%;
+        line-height: 1.4;
+    }
+
+    .chatbot-message.bot {
+        background: #f7f9f5;
+        color: #333;
+        align-self: flex-start;
+    }
+
+    .chatbot-message.user {
+        background: #00b285;
+        color: #fff;
+        align-self: flex-end;
+    }
+
+    .chatbot-form {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+    }
+
+    .chatbot-input {
+        flex: 1;
+        min-width: 0;
+        padding: 0.9rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 999px;
+        font: inherit;
+    }
+
+    .chatbot-send {
+        min-width: 5.5rem;
+        border: none;
+        border-radius: 999px;
+        background: #00b285;
+        color: #fff;
+        cursor: pointer;
+        padding: 0 1rem;
+        font-weight: 700;
+    }
+
+    .chatbot-panel[hidden] {
+        display: none;
+    }
 
 /* Banda premios */
 .band-awards {
