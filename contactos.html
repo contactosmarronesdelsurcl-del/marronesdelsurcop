@@ -90,7 +90,7 @@
 
             <section class="plantas-form-band contactos-form-band" aria-label="Formulario de contacto">
                 <div class="bnt-container">
-                    <form class="plantas-form contactos-form" id="form-contacto" action="#" method="post">
+                    <form class="plantas-form contactos-form" id="form-contacto" action="https://formspree.io/f/xpqewpaw" method="post">
                         <div class="form-row">
                             <div class="form-col">
                                 <label for="nombre">Nombre</label>
@@ -173,6 +173,25 @@
         </footer>
     </div>
 
+    <div class="chatbot-widget">
+        <button type="button" class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chat de ayuda">
+            <span class="chatbot-icon"><i class="fas fa-comments"></i></span>
+        </button>
+        <div class="chatbot-panel" hidden>
+            <div class="chatbot-header">
+                <span>Asistente</span>
+                <button type="button" class="chatbot-close" aria-label="Cerrar chat">&times;</button>
+            </div>
+            <div class="chatbot-body" aria-live="polite">
+                <div class="chatbot-message bot">Hola, ¿en qué podemos ayudarte hoy?</div>
+            </div>
+            <form class="chatbot-form">
+                <label class="screen-reader" for="chatbot-input">Mensaje para el chat</label>
+                <input id="chatbot-input" class="chatbot-input" type="text" placeholder="Escribe tu mensaje..." autocomplete="off">
+                <button type="submit" class="chatbot-send">Enviar</button>
+            </form>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -56,7 +56,7 @@
 
                         <section class="mycosecha-intro">
                             <p>En <strong>Mi Cosecha</strong> reunimos de forma sencilla la información que interesa al productor: calendario de campo, cuidados básicos del castañar y referencias sobre calidad del fruto. Es un espacio pensado para quien ya plantó o está valorando ampliar superficie, con un lenguaje claro y contenidos genéricos que puedes adaptar a tu comarca y a tu variedad.</p>
-                            <p>El castañar combina trabajo en vivero, plantación y años de paisaje forestal hasta la recogida. Las fotografías de esta página son <strong>nuevas imágenes de referencia</strong> (vivero, paisaje y ciclo del fruto) obtenidas de bancos de fotos libres, para ilustrar el discurso sin sustituir el material propio de tu explotación.</p>
+                            <p>Las fotografías son tomadas en tiempo real de las distintas etapas de cosecha, asegurando el marco legal y técnico que se requiere para este servicio agrícola. Es importante para nosotros que los clientes se sientan seguros y protegidos durante todo el tiempo de asesoría.</p>
                         </section>
 
                         <section class="mycosecha-feature">
@@ -138,6 +138,25 @@
         </footer>
     </div>
 
+    <div class="chatbot-widget">
+        <button type="button" class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chat de ayuda">
+            <span class="chatbot-icon"><i class="fas fa-comments"></i></span>
+        </button>
+        <div class="chatbot-panel" hidden>
+            <div class="chatbot-header">
+                <span>Asistente</span>
+                <button type="button" class="chatbot-close" aria-label="Cerrar chat">&times;</button>
+            </div>
+            <div class="chatbot-body" aria-live="polite">
+                <div class="chatbot-message bot">Hola, ¿en qué podemos ayudarte hoy?</div>
+            </div>
+            <form class="chatbot-form">
+                <label class="screen-reader" for="chatbot-input">Mensaje para el chat</label>
+                <input id="chatbot-input" class="chatbot-input" type="text" placeholder="Escribe tu mensaje..." autocomplete="off">
+                <button type="submit" class="chatbot-send">Enviar</button>
+            </form>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

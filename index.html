@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>marronesdelsur — Plantas y asesoría agrícola</title>
+    <title>Marrones del Sur — Plantas y asesoría agrícola</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,10 +58,10 @@
                             <div class="col-spacer"></div>
                             <div class="col-main hero-main">
                                 <div class="ctadeifilheaders">
-                                    <p>marronesdelsur<br>Plantas de castaño y<br>asesoría agrícola especializada</p>
+                                    <p>Marrones del Sur<br>Plantas de castaño y<br>asesoría agrícola especializada</p>
                                 </div>
                                 <div class="deifiljustify">
-                                    <p>marronesdelsur es un vivero agrícola especializado en castañas, enfocado en la producción de planta de calidad y en el acompañamiento técnico de productores. Nuestro objetivo es mejorar la rentabilidad de cada finca con material vegetal adaptado, planificación de plantación y manejo agronómico eficiente.</p>
+                                    <p>Marrones del Sur es un vivero agrícola especializado en castañas, enfocado en la producción de planta de calidad y en el acompañamiento técnico de productores. Nuestro objetivo es mejorar la rentabilidad de cada finca con material vegetal adaptado, planificación de plantación y manejo agronómico eficiente.</p>
                                     <p>Trabajamos principalmente con asesorías: diseño de nuevas plantaciones, reconversión de castañares, nutrición y riego, control sanitario, poda y seguimiento productivo. Combinamos experiencia de campo con criterios técnicos para que cada cliente tome decisiones seguras desde la plantación hasta la entrada en producción.</p>
                                 </div>
                             </div>
@@ -167,6 +167,25 @@
         </footer>
     </div>
 
+    <div class="chatbot-widget">
+        <button type="button" class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chat de ayuda">
+            <span class="chatbot-icon"><i class="fas fa-comments"></i></span>
+        </button>
+        <div class="chatbot-panel" hidden>
+            <div class="chatbot-header">
+                <span>Asistente</span>
+                <button type="button" class="chatbot-close" aria-label="Cerrar chat">&times;</button>
+            </div>
+            <div class="chatbot-body" aria-live="polite">
+                <div class="chatbot-message bot">Hola, ¿en qué podemos ayudarte hoy?</div>
+            </div>
+            <form class="chatbot-form">
+                <label class="screen-reader" for="chatbot-input">Mensaje para el chat</label>
+                <input id="chatbot-input" class="chatbot-input" type="text" placeholder="Escribe tu mensaje..." autocomplete="off">
+                <button type="submit" class="chatbot-send">Enviar</button>
+            </form>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
