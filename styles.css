@@ -312,6 +312,46 @@ a:hover {
     animation: dfmaximage-appear 0.85s ease-out 0.12s both;
 }
 
+/* Mano detrás de las castañas: superponer con grid y animar subiendo sin mover la posición de las castañas */
+.dfmaximage {
+    position: relative;
+    display: grid; /* coloca ambas imágenes en la misma celda para superponerlas */
+    isolation: isolate; /* garantizar que los z-index de los hijos respeten el orden dentro de este contenedor */
+}
+.dfmaximage img {
+    grid-area: 1/1;
+    justify-self: end;
+    align-self: end;
+    width: auto;
+    max-height: 500px;
+}
+.dfmaximage img.img-castanas {
+    position: relative;
+    z-index: 10; /* las castañas permanecen siempre por delante */
+}
+.dfmaximage img.img-hand {
+    position: relative;
+    z-index: 1; /* mano permanentemente detrás */
+    transform-origin: center bottom;
+    /* iniciar claramente detrás de las castañas */
+    transform: translateY(120px);
+    /* animación una sola vez y mantener el estado final (quedarse arriba) */
+    animation: hand-rise 3.2s ease-in-out 0.25s 1 forwards;
+    will-change: transform;
+}
+
+@keyframes hand-rise {
+    0% { transform: translateY(120px) scale(1); }
+    30% { transform: translateY(20px) scale(0.98); }
+    50% { transform: translateY(-30px) scale(1.02); }
+    75% { transform: translateY(-20px) scale(1); }
+    100% { transform: translateY(-30px) scale(1.02); } /* quedarse arriba */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dfmaximage img.img-hand { animation: none; }
+}
+
 /* Forzar figura e imagen a ocupar la columna derecha en layouts flex/grid */
 .hero-image-wrap > .dfmaximage {
     width: 100% !important;
