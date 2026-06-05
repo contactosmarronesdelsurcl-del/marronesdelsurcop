@@ -6,42 +6,6 @@
     box-sizing: border-box;
 }
 
-/* ===== Forzar EXACTA apariencia de escritorio en móviles (<=768px) ===== */
-@media (max-width: 768px) {
-    .primary-menu { display: flex !important; }
-    .mobile-menu-trigger { display: none !important; }
-    .logo-desktop { display: block !important; }
-    .logo-mobile { display: none !important; }
-    .nav-primary { visibility: visible !important; pointer-events: auto !important; display: flex !important; }
-
-    .header-inner { display: flex !important; justify-content: space-between !important; align-items: center !important; }
-
-    /* Hero: columnas de escritorio */
-    .row-hero { grid-template-columns: 1fr minmax(0, 5.5fr) minmax(0, 3fr) !important; margin-top: -4rem !important; align-items: center !important; }
-    .hero-main { padding: 6rem 5% 4rem !important; min-width: 0 !important; }
-    .hero-image-wrap { padding: 4rem 5% 4rem 0 !important; justify-content: flex-end !important; min-width: 0 !important; }
-    .dfmaximage img { width: auto !important; max-height: 500px !important; }
-
-    /* Galería y bandas */
-    .gallery-row { grid-template-columns: repeat(4, 1fr) !important; }
-    .band-awards { grid-template-columns: 1fr minmax(0, 6fr) 1fr !important; }
-
-    /* Grids a 4 columnas */
-    .stats-row, .stats-row-second { grid-template-columns: repeat(4, 1fr) !important; }
-    .service-grid, .phase-grid, .plantas-grid { grid-template-columns: repeat(3, 1fr) !important; }
-
-    /* Footer */
-    .footer-widgets { grid-template-columns: repeat(4, 1fr) !important; text-align: left !important; }
-
-    /* Tipografías */
-    .ctadeifilheaders { font-size: 4rem !important; }
-    .contadorvalor { font-size: 4.8rem !important; }
-
-    html, body { overflow-x: hidden !important; }
-}
-
-/* (Se eliminó un bloque que forzaba la vista de escritorio en móviles) */
-
 html {
     font-size: 62.5%;
     overflow-y: scroll;
