@@ -1593,96 +1593,6 @@ a:hover {
         padding: 2rem 5%;
         order: 2;
     }
-
-    .band-awards {
-        grid-template-columns: 1fr;
-    }
-
-    .awards-inner {
-        padding: 2.8rem 3% 4rem;
-    }
-
-    .gallery-row {
-        grid-template-columns: repeat(2, 1fr);
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-    }
-
-    .stats-row,
-    .stats-row-second {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .service-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .phase-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .oqf-two-col {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .method-card {
-        min-height: 500px;
-        padding: 1.4rem 5%;
-    }
-
-    .page-oqf .method-card {
-        flex: 0 0 100% !important;
-        height: 495px !important;
-        min-height: 495px !important;
-        max-height: 495px !important;
-        padding: 0.75rem 4.5% !important;
-    }
-
-    .page-oqf .method-card h3 {
-        font-size: 1.25rem;
-    }
-
-    .page-oqf .method-card p {
-        font-size: 0.9rem;
-    }
-
-    .method-card h3 {
-        font-size: 1.5rem;
-    }
-
-    .method-card p {
-        font-size: 1.15rem;
-    }
-
-    .footer-widgets {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .plantas-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .plantas-cta p {
-        font-size: 2.4rem;
-    }
-
-    .mycosecha-gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .byaddup {
-        position: static;
-        margin-top: 2rem;
-        transform: none;
-        text-align: center;
-    }
-
-    .byaddup a,
-    .byaddup .byaddup-credit {
-        transform: none;
-    }
 }
 
 @media (max-width: 768px) {
@@ -1697,16 +1607,6 @@ a:hover {
         align-items: center;
         position: relative;
     }
-
-    /* Forzar menú horizontal y header compacto como en escritorio */
-    .header-inner { display: flex !important; justify-content: space-between !important; align-items: center !important; flex-wrap: nowrap !important; }
-    .primary-menu { display: flex !important; flex-wrap: nowrap !important; gap: 0 3rem !important; align-items: center !important; }
-    .primary-menu li { margin: 0 !important; }
-    /* Ajustes para evitar overflow en móviles (mantener apariencia horizontal) */
-    .primary-menu { gap: 0 1rem !important; }
-    .primary-menu a { padding: 0.6rem 0 !important; font-size: 1.2rem !important; }
-    .logo a img { max-height: 80px !important; width: auto !important; }
-    .site-header { padding: 0 !important; }
 
     .mobile-menu-trigger {
         display: flex;
@@ -1724,6 +1624,7 @@ a:hover {
     }
 
     .nav-primary {
+        display: none;
         grid-column: 3;
         min-width: 48px;
         visibility: hidden;
@@ -1739,6 +1640,15 @@ a:hover {
         margin: 0 auto;
     }
 
+    .logo a img {
+        max-height: 80px !important;
+        width: auto !important;
+    }
+
+    .site-header {
+        padding: 0 !important;
+    }
+
     .ctadeifilheaders {
         font-size: 3rem;
     }
@@ -1749,15 +1659,6 @@ a:hover {
 
     .contadornome {
         font-size: 1.6rem;
-    }
-
-    .gallery-row {
-        grid-template-columns: 1fr;
-    }
-
-    .stats-row,
-    .stats-row-second {
-        grid-template-columns: 1fr;
     }
 
     .inner-hero h1 {
