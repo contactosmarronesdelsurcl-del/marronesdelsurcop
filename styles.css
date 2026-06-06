@@ -243,7 +243,7 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr minmax(0, 5.5fr) minmax(0, 3fr);
     gap: 0;
-    align-items: start;
+    align-items: center;
     margin-top: -4rem;
     padding-bottom: 2rem;
     background: #fff;
@@ -254,8 +254,7 @@ a:hover {
 }
 
 .hero-main {
-    padding: 6rem 4% 4rem;
-    min-width: 0; /* evitar que el contenido se encoja inesperadamente */
+    padding: 6rem 5% 4rem;
 }
 
 .ctadeifilheaders {
@@ -286,7 +285,6 @@ a:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    min-width: 0;
 }
 
 @keyframes dfmaximage-appear {
@@ -300,69 +298,11 @@ a:hover {
     }
 }
 
-.dfmaximage {
-    width: 100%;
-    max-width: 600px;
-}
 .dfmaximage img {
     max-height: 500px;
     width: auto;
-    max-width: 100%;
     display: block;
     animation: dfmaximage-appear 0.85s ease-out 0.12s both;
-}
-
-/* Mano detrás de las castañas: superponer con grid y animar subiendo sin mover la posición de las castañas */
-.dfmaximage {
-    position: relative;
-    display: grid; /* coloca ambas imágenes en la misma celda para superponerlas */
-    isolation: isolate; /* garantizar que los z-index de los hijos respeten el orden dentro de este contenedor */
-}
-.dfmaximage img {
-    grid-area: 1/1;
-    justify-self: end;
-    align-self: end;
-    width: auto;
-    max-height: 500px;
-}
-.dfmaximage img.img-castanas {
-    position: relative;
-    z-index: 10; /* las castañas permanecen siempre por delante */
-}
-.dfmaximage img.img-hand {
-    position: relative;
-    z-index: 1; /* mano permanentemente detrás */
-    transform-origin: center bottom;
-    /* iniciar claramente detrás de las castañas */
-    transform: translateY(120px);
-    /* animación una sola vez y mantener el estado final (quedarse arriba) */
-    animation: hand-rise 3.2s ease-in-out 0.25s 1 forwards;
-    will-change: transform;
-}
-
-@keyframes hand-rise {
-    0% { transform: translateY(120px) scale(1); }
-    30% { transform: translateY(20px) scale(0.98); }
-    50% { transform: translateY(-30px) scale(1.02); }
-    75% { transform: translateY(-20px) scale(1); }
-    100% { transform: translateY(-30px) scale(1.02); } /* quedarse arriba */
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .dfmaximage img.img-hand { animation: none; }
-}
-
-/* Forzar figura e imagen a ocupar la columna derecha en layouts flex/grid */
-.hero-image-wrap > .dfmaximage {
-    width: 100% !important;
-    min-width: 0 !important;
-    flex: 1 1 100% !important;
-    display: block !important;
-}
-.hero-image-wrap > .dfmaximage img {
-    width: auto !important;
-    height: auto !important;
-    max-width: 100% !important;
 }
 
     .chatbot-widget {
@@ -1615,7 +1555,6 @@ a:hover {
 }
 
 @media (max-width: 1024px) {
-    /* Evitar solapamientos y overflow en dispositivos medios/pequeños */
     .row-hero {
         grid-template-columns: 1fr;
         margin-top: 0;
@@ -1623,8 +1562,6 @@ a:hover {
 
     .hero-main {
         padding-top: 3rem;
-        padding-left: 4%;
-        padding-right: 4%;
         order: 1;
     }
 
@@ -1633,10 +1570,99 @@ a:hover {
         padding: 2rem 5%;
         order: 2;
     }
+
+    .band-awards {
+        grid-template-columns: 1fr;
+    }
+
+    .awards-inner {
+        padding: 2.8rem 3% 4rem;
+    }
+
+    .gallery-row {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+    }
+
+    .stats-row,
+    .stats-row-second {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .phase-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .oqf-two-col {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .method-card {
+        min-height: 500px;
+        padding: 1.4rem 5%;
+    }
+
+    .page-oqf .method-card {
+        flex: 0 0 100% !important;
+        height: 495px !important;
+        min-height: 495px !important;
+        max-height: 495px !important;
+        padding: 0.75rem 4.5% !important;
+    }
+
+    .page-oqf .method-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .page-oqf .method-card p {
+        font-size: 0.9rem;
+    }
+
+    .method-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .method-card p {
+        font-size: 1.15rem;
+    }
+
+    .footer-widgets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plantas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .plantas-cta p {
+        font-size: 2.4rem;
+    }
+
+    .mycosecha-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .byaddup {
+        position: static;
+        margin-top: 2rem;
+        transform: none;
+        text-align: center;
+    }
+
+    .byaddup a,
+    .byaddup .byaddup-credit {
+        transform: none;
+    }
 }
 
 @media (max-width: 768px) {
-    /* Asegurar layout correcto en móviles pequeños */
     .primary-menu {
         display: none;
     }
@@ -1664,7 +1690,6 @@ a:hover {
     }
 
     .nav-primary {
-        display: none;
         grid-column: 3;
         min-width: 48px;
         visibility: hidden;
@@ -1680,15 +1705,6 @@ a:hover {
         margin: 0 auto;
     }
 
-    .logo a img {
-        max-height: 80px !important;
-        width: auto !important;
-    }
-
-    .site-header {
-        padding: 0 !important;
-    }
-
     .ctadeifilheaders {
         font-size: 3rem;
     }
@@ -1699,6 +1715,15 @@ a:hover {
 
     .contadornome {
         font-size: 1.6rem;
+    }
+
+    .gallery-row {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-row,
+    .stats-row-second {
+        grid-template-columns: 1fr;
     }
 
     .inner-hero h1 {
