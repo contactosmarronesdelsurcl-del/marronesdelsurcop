@@ -51,6 +51,35 @@
         if (section) io.observe(section);
     }
 
+    function initPlantCardReveal() {
+        var grid = document.querySelector('.page-plantas .plantas-grid');
+        if (!grid) return;
+
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.plant-card'));
+        if (!cards.length) return;
+
+        function revealCards() {
+            grid.classList.add('is-revealing');
+            cards.forEach(function (card, index) {
+                card.style.transitionDelay = (index * 180) + 'ms';
+                card.classList.add('is-visible');
+            });
+        }
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+            revealCards();
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) return;
+            observer.disconnect();
+            revealCards();
+        }, { threshold: 0.12 });
+        observer.observe(grid);
+        grid.classList.add('is-revealing');
+    }
+
     function initMobileNav() {
         var trigger = document.querySelector('.mobile-menu-trigger');
         var panel = document.getElementById('nav-mobile');
@@ -64,7 +93,10 @@
                 shadow.classList.add('is-open');
             }
             panel.setAttribute('aria-hidden', 'false');
+            trigger.setAttribute('aria-expanded', 'true');
             document.body.style.overflow = 'hidden';
+            var firstLink = panel.querySelector('a');
+            if (firstLink) firstLink.focus();
         }
 
         function close() {
@@ -74,10 +106,15 @@
                 shadow.hidden = true;
             }
             panel.setAttribute('aria-hidden', 'true');
+            if (trigger) {
+                trigger.setAttribute('aria-expanded', 'false');
+                trigger.focus();
+            }
             document.body.style.overflow = '';
         }
 
         if (trigger && panel) {
+            trigger.setAttribute('aria-expanded', 'false');
             trigger.addEventListener('click', open);
         }
         if (closeBtn) closeBtn.addEventListener('click', close);
@@ -87,6 +124,11 @@
                 a.addEventListener('click', close);
             });
         }
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && panel && panel.classList.contains('is-open')) {
+                close();
+            }
+        });
     }
 
     function initContactCaptcha() {
@@ -262,11 +304,275 @@
         });
     }
 
+    function initMethodologySlider() {
+        var wrap = document.querySelector('.methodology-wrap');
+        if (!wrap) return;
+
+        var track = wrap.querySelector('.methodology-grid');
+        var prev = wrap.querySelector('.method-nav.prev');
+        var next = wrap.querySelector('.method-nav.next');
+        var slides = Array.prototype.slice.call(wrap.querySelectorAll('.method-card'));
+        var dots = Array.prototype.slice.call(wrap.querySelectorAll('.methodology-pagination button'));
+        var autoplay = wrap.querySelector('.method-autoplay');
+        if (!track || !prev || !next || !slides.length || dots.length !== slides.length || !autoplay) return;
+
+        var activeIndex = 0;
+        var angle = 360 / slides.length;
+        var timer = null;
+        var isVisible = true;
+        var isPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var hasStartedRotation = false;
+
+        function layoutCylinder() {
+            var radius = slides[0].offsetWidth / (2 * Math.tan(Math.PI / slides.length));
+            slides.forEach(function (slide, index) {
+                slide.style.transform = 'translateX(-50%) rotateY(' + (index * angle) + 'deg) translateZ(' + radius + 'px)';
+            });
+            render();
+        }
+
+        function render() {
+            track.style.transform = 'rotateY(' + (-activeIndex * angle) + 'deg)';
+            slides.forEach(function (slide, index) {
+                var offset = (index - activeIndex + slides.length) % slides.length;
+                var faceAngle = Math.min(offset, slides.length - offset) * angle;
+                var light = Math.max(0, Math.cos(faceAngle * Math.PI / 180));
+                slide.style.opacity = String(0.28 + light * 0.72);
+                slide.style.filter = 'brightness(' + (0.48 + light * 0.52) + ')';
+                slide.setAttribute('aria-hidden', index === activeIndex ? 'false' : 'true');
+            });
+            dots.forEach(function (dot, index) {
+                dot.setAttribute('aria-pressed', index === activeIndex ? 'true' : 'false');
+            });
+        }
+
+        function moveTo(index) {
+            activeIndex = (index + slides.length) % slides.length;
+            hasStartedRotation = true;
+            render();
+            updateTimer();
+        }
+
+        function stopTimer() {
+            if (timer) {
+                window.clearTimeout(timer);
+                timer = null;
+            }
+        }
+
+        function updateTimer() {
+            stopTimer();
+            if (!isPaused && isVisible && !document.hidden) {
+                timer = window.setTimeout(function () {
+                    moveTo(activeIndex + 1);
+                }, hasStartedRotation ? 5500 : 500);
+            }
+        }
+
+        function setPaused(paused) {
+            isPaused = paused;
+            autoplay.setAttribute('aria-label', paused ? 'Reanudar carrusel' : 'Pausar carrusel');
+            autoplay.setAttribute('aria-pressed', paused ? 'true' : 'false');
+            autoplay.querySelector('span').textContent = paused ? '▶' : 'Ⅱ';
+            updateTimer();
+        }
+
+        prev.addEventListener('click', function () {
+            moveTo(activeIndex - 1);
+        });
+        next.addEventListener('click', function () {
+            moveTo(activeIndex + 1);
+        });
+        dots.forEach(function (dot, index) {
+            dot.addEventListener('click', function () {
+                moveTo(index);
+            });
+        });
+        autoplay.addEventListener('click', function () {
+            setPaused(!isPaused);
+        });
+        wrap.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                moveTo(activeIndex - 1);
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                moveTo(activeIndex + 1);
+            }
+        });
+
+        var startX = null;
+        wrap.addEventListener('touchstart', function (event) {
+            startX = event.changedTouches[0].clientX;
+        }, { passive: true });
+        wrap.addEventListener('touchend', function (event) {
+            if (startX === null) return;
+            var distance = event.changedTouches[0].clientX - startX;
+            if (Math.abs(distance) > 45) {
+                moveTo(activeIndex + (distance < 0 ? 1 : -1));
+            }
+            startX = null;
+        }, { passive: true });
+
+        if ('ResizeObserver' in window) {
+            var resizeObserver = new ResizeObserver(layoutCylinder);
+            resizeObserver.observe(slides[0]);
+        } else {
+            window.addEventListener('resize', layoutCylinder);
+        }
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                isVisible = entries[0].isIntersecting;
+                updateTimer();
+            }, { threshold: 0.2 });
+            observer.observe(wrap);
+        }
+
+        document.addEventListener('visibilitychange', updateTimer);
+        layoutCylinder();
+        updateTimer();
+    }
+
+    function initGalleryCarousel() {
+        var carousel = document.querySelector('.gallery-carousel');
+        if (!carousel) return;
+
+        var track = carousel.querySelector('.gallery-track');
+        var slides = Array.prototype.slice.call(carousel.querySelectorAll('.gallery-cell'));
+        var dots = Array.prototype.slice.call(carousel.querySelectorAll('.gallery-pagination button'));
+        var previous = carousel.querySelector('.gallery-prev');
+        var next = carousel.querySelector('.gallery-next');
+        var autoplay = carousel.querySelector('.gallery-autoplay');
+        if (!track || !slides.length || dots.length !== slides.length || !previous || !next || !autoplay) return;
+
+        var activeIndex = 0;
+        var panelAngle = 52;
+        var radius = 0;
+        var timer = null;
+        var isVisible = true;
+        var isPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var hasStartedRotation = false;
+
+        function render() {
+            slides.forEach(function (slide, index) {
+                var offset = (index - activeIndex + slides.length) % slides.length;
+                if (offset > slides.length / 2) offset -= slides.length;
+                var faceAngle = offset * panelAngle;
+                var light = Math.max(0, Math.cos(faceAngle * Math.PI / 180));
+                slide.style.transform = 'translate(-50%, -50%) rotateY(' + faceAngle + 'deg) translateZ(' + radius + 'px)';
+                slide.style.opacity = String(0.42 + light * 0.58);
+                slide.style.filter = 'brightness(' + (0.62 + light * 0.38) + ')';
+                slide.setAttribute('aria-hidden', index === activeIndex ? 'false' : 'true');
+            });
+            dots.forEach(function (dot, index) {
+                dot.setAttribute('aria-pressed', index === activeIndex ? 'true' : 'false');
+            });
+        }
+
+        function moveTo(index) {
+            activeIndex = (index + slides.length) % slides.length;
+            hasStartedRotation = true;
+            render();
+            updateTimer();
+        }
+
+        function stopTimer() {
+            if (timer) {
+                window.clearTimeout(timer);
+                timer = null;
+            }
+        }
+
+        function updateTimer() {
+            stopTimer();
+            if (!isPaused && isVisible && !document.hidden) {
+                timer = window.setTimeout(function () {
+                    moveTo(activeIndex + 1);
+                }, hasStartedRotation ? 5500 : 500);
+            }
+        }
+
+        function setPaused(paused) {
+            isPaused = paused;
+            autoplay.setAttribute('aria-label', paused ? 'Reanudar carrusel' : 'Pausar carrusel');
+            autoplay.setAttribute('aria-pressed', paused ? 'true' : 'false');
+            autoplay.querySelector('span').textContent = paused ? '▶' : 'Ⅱ';
+            updateTimer();
+        }
+
+        previous.addEventListener('click', function () {
+            moveTo(activeIndex - 1);
+        });
+        next.addEventListener('click', function () {
+            moveTo(activeIndex + 1);
+        });
+        dots.forEach(function (dot, index) {
+            dot.addEventListener('click', function () {
+                moveTo(index);
+            });
+        });
+        autoplay.addEventListener('click', function () {
+            setPaused(!isPaused);
+        });
+        carousel.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                moveTo(activeIndex - 1);
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                moveTo(activeIndex + 1);
+            }
+        });
+
+        var startX = null;
+        carousel.addEventListener('touchstart', function (event) {
+            startX = event.changedTouches[0].clientX;
+        }, { passive: true });
+        carousel.addEventListener('touchend', function (event) {
+            if (startX === null) return;
+            var distance = event.changedTouches[0].clientX - startX;
+            if (Math.abs(distance) > 45) {
+                moveTo(activeIndex + (distance < 0 ? 1 : -1));
+            }
+            startX = null;
+        }, { passive: true });
+
+        function layoutCylinder() {
+            radius = slides[0].offsetWidth / (2 * Math.tan(panelAngle * Math.PI / 360));
+            render();
+        }
+
+        layoutCylinder();
+        if ('ResizeObserver' in window) {
+            var resizeObserver = new ResizeObserver(layoutCylinder);
+            resizeObserver.observe(slides[0]);
+        } else {
+            window.addEventListener('resize', layoutCylinder);
+        }
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                isVisible = entries[0].isIntersecting;
+                updateTimer();
+            }, { threshold: 0.2 });
+            observer.observe(carousel);
+        }
+        document.addEventListener('visibilitychange', updateTimer);
+        document.addEventListener('visibilitychange', updateTimer);
+        document.addEventListener('visibilitychange', updateTimer);
+        render();
+        updateTimer();
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         initMobileNav();
         initCounters();
+        initPlantCardReveal();
         initContactCaptcha();
         initProcesosForm();
         initChatbot();
+        initMethodologySlider();
+        initGalleryCarousel();
     });
 })();
