@@ -3565,9 +3565,15 @@ textarea:focus-visible {
 }
 
 @media (min-width: 769px) {
+    .hero-video {
+        pointer-events: none;
+    }
+
     .hero-video::-webkit-media-controls,
     .hero-video::-webkit-media-controls-enclosure,
     .hero-video::-webkit-media-controls-overlay-play-button,
+    .hero-video::-webkit-media-controls-start-playback-button,
+    .hero-video::-webkit-media-controls-play-button,
     .hero-video::-webkit-media-controls-picture-in-picture-button,
     .hero-video::-webkit-media-controls-fullscreen-button {
         display: none !important;
