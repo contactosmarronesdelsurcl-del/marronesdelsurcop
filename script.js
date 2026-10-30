@@ -67,6 +67,31 @@
         observer.observe(grid);
     }
 
+    function initDesktopVideoControls() {
+        var video = document.querySelector('.hero-video');
+        if (!video || !window.matchMedia) return;
+
+        var desktop = window.matchMedia('(min-width: 769px)');
+        function updateVideoControls() {
+            if (desktop.matches) {
+                video.setAttribute('disablepictureinpicture', '');
+                video.setAttribute('disableremoteplayback', '');
+                video.setAttribute('controlslist', 'nofullscreen noremoteplayback nodownload');
+            } else {
+                video.removeAttribute('disablepictureinpicture');
+                video.removeAttribute('disableremoteplayback');
+                video.removeAttribute('controlslist');
+            }
+        }
+
+        updateVideoControls();
+        if (desktop.addEventListener) {
+            desktop.addEventListener('change', updateVideoControls);
+        } else if (desktop.addListener) {
+            desktop.addListener(updateVideoControls);
+        }
+    }
+
     function initMobileNav() {
         var trigger = document.querySelector('.mobile-menu-trigger');
         var panel = document.getElementById('nav-mobile');
@@ -559,6 +584,7 @@
         initMobileNav();
         initCounters();
         initPlantCardEntrance();
+        initDesktopVideoControls();
         initContactCaptcha();
         initProcesosForm();
         initChatbot();

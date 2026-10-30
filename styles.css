@@ -3564,6 +3564,16 @@ textarea:focus-visible {
     background: transparent;
 }
 
+@media (min-width: 769px) {
+    .hero-video::-webkit-media-controls,
+    .hero-video::-webkit-media-controls-enclosure,
+    .hero-video::-webkit-media-controls-overlay-play-button,
+    .hero-video::-webkit-media-controls-picture-in-picture-button,
+    .hero-video::-webkit-media-controls-fullscreen-button {
+        display: none !important;
+    }
+}
+
 .gallery-controls {
     display: flex;
     align-items: center;
