@@ -51,35 +51,6 @@
         if (section) io.observe(section);
     }
 
-    function initPlantCardReveal() {
-        var grid = document.querySelector('.page-plantas .plantas-grid');
-        if (!grid) return;
-
-        var cards = Array.prototype.slice.call(grid.querySelectorAll('.plant-card'));
-        if (!cards.length) return;
-
-        function revealCards() {
-            grid.classList.add('is-revealing');
-            cards.forEach(function (card, index) {
-                card.style.transitionDelay = (index * 180) + 'ms';
-                card.classList.add('is-visible');
-            });
-        }
-
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-            revealCards();
-            return;
-        }
-
-        var observer = new IntersectionObserver(function (entries) {
-            if (!entries[0].isIntersecting) return;
-            observer.disconnect();
-            revealCards();
-        }, { threshold: 0.12 });
-        observer.observe(grid);
-        grid.classList.add('is-revealing');
-    }
-
     function initMobileNav() {
         var trigger = document.querySelector('.mobile-menu-trigger');
         var panel = document.getElementById('nav-mobile');
@@ -568,7 +539,6 @@
     document.addEventListener('DOMContentLoaded', function () {
         initMobileNav();
         initCounters();
-        initPlantCardReveal();
         initContactCaptcha();
         initProcesosForm();
         initChatbot();
