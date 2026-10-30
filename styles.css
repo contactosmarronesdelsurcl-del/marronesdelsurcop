@@ -1838,7 +1838,7 @@ a:hover {
 
 /* Marrones del Sur — sistema visual */
 :root {
-    --forest: #153827;
+    --forest: #1f5938;
     --forest-deep: #102c20;
     --leaf: #557b50;
     --moss: #a7b996;
@@ -3745,7 +3745,7 @@ textarea:focus-visible {
 
 .site-content h1,
 .site-content h2 {
-    color: var(--forest) !important;
+    color: #1f5938 !important;
     transition: none !important;
 }
 
@@ -3754,7 +3754,7 @@ textarea:focus-visible {
 .chatbot-widget .chatbot-toggle:focus,
 .chatbot-widget .chatbot-toggle:active {
     color: #fff !important;
-    background-color: var(--forest) !important;
+    background-color: #1f5938 !important;
     filter: none;
 }
 
