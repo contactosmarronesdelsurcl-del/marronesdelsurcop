@@ -67,6 +67,28 @@
         observer.observe(grid);
     }
 
+    function initMycosechaGalleryEntrance() {
+        if (!document.body.classList.contains('page-mycosecha')) return;
+
+        var gallery = document.querySelector('.mycosecha-gallery');
+        if (!gallery || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var cards = Array.prototype.slice.call(gallery.querySelectorAll('.mycosecha-card'));
+        if (!cards.length) return;
+
+        gallery.classList.add('mycosecha-gallery--entrance-ready');
+        cards.forEach(function (card, index) {
+            card.style.transitionDelay = (index * 750) + 'ms';
+        });
+
+        var observer = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) return;
+            gallery.classList.add('mycosecha-gallery--entrance-active');
+            observer.disconnect();
+        }, { threshold: 0.12 });
+        observer.observe(gallery);
+    }
+
     function initDesktopVideoControls() {
         var video = document.querySelector('.hero-video');
         if (!video || !window.matchMedia) return;
@@ -584,6 +606,7 @@
         initMobileNav();
         initCounters();
         initPlantCardEntrance();
+        initMycosechaGalleryEntrance();
         initDesktopVideoControls();
         initContactCaptcha();
         initProcesosForm();

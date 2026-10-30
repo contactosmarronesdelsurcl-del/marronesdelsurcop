@@ -2955,6 +2955,18 @@ textarea:focus-visible {
 .mycosecha-card:nth-child(5) { animation-delay: 280ms; }
 .mycosecha-card:nth-child(6) { animation-delay: 350ms; }
 
+.mycosecha-gallery.mycosecha-gallery--entrance-ready .mycosecha-card {
+    opacity: 0;
+    transform: translateY(1.8rem);
+    animation: none;
+    transition: opacity 1100ms ease, transform 1100ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.mycosecha-gallery.mycosecha-gallery--entrance-active .mycosecha-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .mycosecha-card img {
     aspect-ratio: 1.35 / 1;
     border-radius: 1.4rem;
