@@ -3564,9 +3564,23 @@ textarea:focus-visible {
     background: transparent;
 }
 
+.hero-video-shield {
+    display: none;
+}
+
 @media (min-width: 769px) {
     .hero-video {
         pointer-events: none;
+    }
+
+    .hero-video-shield {
+        position: absolute;
+        inset: 1.4rem;
+        z-index: 2;
+        display: block;
+        border-radius: 50%;
+        background: transparent;
+        pointer-events: auto;
     }
 
     .hero-video::-webkit-media-controls,
