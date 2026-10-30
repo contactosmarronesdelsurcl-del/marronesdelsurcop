@@ -51,11 +51,30 @@
         if (section) io.observe(section);
     }
 
+    function initPlantCardEntrance() {
+        if (!document.body.classList.contains('page-plantas')) return;
+
+        var grid = document.querySelector('.plantas-grid');
+        if (!grid || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        grid.classList.add('plantas-grid--entrance-ready');
+
+        var observer = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) return;
+            grid.classList.add('plantas-grid--entrance-active');
+            observer.disconnect();
+        }, { threshold: 0.12 });
+        observer.observe(grid);
+    }
+
     function initMobileNav() {
         var trigger = document.querySelector('.mobile-menu-trigger');
         var panel = document.getElementById('nav-mobile');
         var shadow = document.getElementById('mobile-shadow');
         var closeBtn = document.getElementById('mobile-close');
+
+        if (panel) document.body.appendChild(panel);
+        if (shadow) document.body.appendChild(shadow);
 
         function open() {
             panel.classList.add('is-open');
@@ -539,6 +558,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         initMobileNav();
         initCounters();
+        initPlantCardEntrance();
         initContactCaptcha();
         initProcesosForm();
         initChatbot();
