@@ -777,7 +777,7 @@ a:hover {
     margin: 0 0 1rem;
     font-family: Montserrat, Arial, sans-serif;
     font-size: 4rem;
-    color: #003300;
+    color: var(--forest);
     line-height: 1.15;
 }
 
@@ -794,7 +794,7 @@ a:hover {
 
 .page-section h2 {
     margin: 0 0 1.6rem;
-    color: #003300;
+    color: var(--forest);
     font-family: Montserrat, Arial, sans-serif;
     font-size: 2.8rem;
 }
@@ -873,7 +873,7 @@ a:hover {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    color: #003300;
+    color: var(--forest);
     font-size: 3rem;
     font-weight: 300;
     line-height: 1.35;
@@ -885,7 +885,7 @@ a:hover {
 
 .oqf-title {
     margin: 0;
-    color: #003300;
+    color: var(--forest);
     font-size: 4rem;
     font-weight: 900;
     font-family: Montserrat, Arial, sans-serif;
@@ -1144,7 +1144,7 @@ a:hover {
     margin: 0;
     font-family: Montserrat, Arial, sans-serif;
     font-size: 3.6rem;
-    color: #333;
+    color: var(--forest);
     font-weight: 700;
 }
 
@@ -1498,7 +1498,7 @@ a:hover {
     margin: 0;
     font-family: Montserrat, Arial, sans-serif;
     font-size: 3.6rem;
-    color: #333;
+    color: var(--forest);
     font-weight: 700;
 }
 
@@ -1838,7 +1838,7 @@ a:hover {
 
 /* Marrones del Sur — sistema visual */
 :root {
-    --forest: #173d2b;
+    --forest: #153827;
     --forest-deep: #102c20;
     --leaf: #557b50;
     --moss: #a7b996;
@@ -1987,6 +1987,13 @@ textarea:focus-visible {
     color: var(--forest);
     border-bottom-color: var(--line);
     font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .primary-mobile-menu a:hover {
+        color: var(--forest);
+        background-color: #b7d889;
+    }
 }
 
 .mobile-menu-shadow {
@@ -3734,6 +3741,21 @@ textarea:focus-visible {
         width: 4rem;
         height: 4rem;
     }
+}
+
+.site-content h1,
+.site-content h2 {
+    color: var(--forest) !important;
+    transition: none !important;
+}
+
+.chatbot-widget .chatbot-toggle,
+.chatbot-widget .chatbot-toggle:hover,
+.chatbot-widget .chatbot-toggle:focus,
+.chatbot-widget .chatbot-toggle:active {
+    color: #fff !important;
+    background-color: var(--forest) !important;
+    filter: none;
 }
 
 @media (max-width: 420px) {
